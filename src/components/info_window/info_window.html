@@ -1,0 +1,27 @@
+<div class="overlay" ng-class="{'show': overlay }">
+    
+    <div class="overlay-box">
+        <div class="close-overlay" ng-click="close()"><i class="fa fa-times-circle-o"></i></div>
+        <div class="overlay-box-info">
+            <h1>{{ map.window.model.title }}</h1> 
+            <p>{{ map.window.model.address }}</p>
+        </div>
+<!--         <div class="overlay-box-favorite">
+            <a class="favorite" 
+                ng-click="removeFavorite(map.window.model)"
+                ng-if="map.window.model.isFavorite">
+                <span class="favorited-heart">&#x2665;</span> Favorite
+            </a>
+
+            <a class="favorite"
+                ng-click="addFavorite(map.window.model)"
+                ng-if="!map.window.model.isFavorite">
+                <span class="unfavorited-heart">&#x2661;</span> Add Favorite
+            </a>
+        </div> -->
+        <div class="overlay-box-image">
+            <img ng-src="https://data.baltimorecity.gov/views/zqh4-9ud5/files/{{ map.window.model.image.file_id }}?filename={{ map.window.model.image.filename}}" ng-if="map.window.model.image"/>
+            <h1 ng-if="!map.window.model.image">Sorry, there is no image.</h1>
+        </div>
+    </div>
+</div>

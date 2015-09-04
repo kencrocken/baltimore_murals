@@ -1,0 +1,71 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-switch="isLoading">
+
+    <div ng-switch-when="true">
+        <div class="cssload-loading">
+            <div class="cssload-finger cssload-finger-1">
+                <div class="cssload-finger-item">
+                    <span></span><i></i>
+                </div>
+            </div>
+            <div class="cssload-finger cssload-finger-2">
+                <div class="cssload-finger-item">
+                    <span></span><i></i>
+                </div>
+            </div>
+            <div class="cssload-finger cssload-finger-3">
+                <div class="cssload-finger-item">
+                    <span></span><i></i>
+                </div>
+            </div>
+            <div class="cssload-finger cssload-finger-4">
+                <div class="cssload-finger-item">
+                    <span></span><i></i>
+                </div>
+            </div>
+            <div class="cssload-last-finger">
+                <div class="cssload-last-finger-item"><i></i></div>
+            </div>
+            <h1>{{ percentLoaded }}%</h1>
+        </div>
+         
+    </div>
+
+    <div ng-switch-when="false" ng-switch="isSuccessful">
+
+        <div ng-switch-when="true">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options' control='map.control'>
+
+                <ui-gmap-polygon static="true" ng-repeat="p in polygons track by p.id" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fill="p.fill" fit="false" editable="p.editable" draggable="p.draggable">
+                </ui-gmap-polygon>
+
+                <ui-gmap-markers models="map.markers" coords="'self'" doCluster="false" fit="'true'" icon="'icon'" events="map.markersEvents" options="'options'">
+                </ui-gmap-markers>     
+                    
+            </ui-gmap-google-map>
+
+            <div ng-include="'components/info_window/info_window.html'"></div>
+        </div>
+
+        <div ng-switch-when="false">
+
+            <strong>Oops</strong>: Something when wrong :(  Please refresh the browser.
+
+        </div>
+
+    </div>
+</div>
+
+<!-- <nav class="js-menu sliding-panel-content" ng-class="{ 'is-visible': slidePanel }">
+    <div class="slide-panel-close" ng-click="slideToggle()">X</div>
+  <ul>
+    <li ng-repeat="favorite in favorites">
+        <h1>{{ favorite.address }}</h1>
+        <img ng-src="https://data.baltimorecity.gov/views/zqh4-9ud5/files/{{ favorite.image.file_id }}?filename={{ favorite.image.filename}}" ng-if="favorite.image"/>
+        <h1 ng-if="!favorite.image">Sorry, there is no image.</h1>
+    </li>
+  </ul>
+</nav>
+
+<div class="js-menu-screen sliding-panel-fade-screen" ng-class="{ 'is-visible': slidePanel }" ng-click="slideToggle()"></div>
+ -->
